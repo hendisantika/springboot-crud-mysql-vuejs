@@ -1,0 +1,24 @@
+version: '3.1'
+services:
+  docker-mysql:
+    container_name: docker-mysql
+    image: mysql/mysql-server
+    environment:
+      MYSQL_DATABASE: vueJS
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3306:3306"
+    restart: always
+
+  crud-mysql-vuejs:
+    build: .
+    volumes:
+      - .:/app
+      - ~/.m2:/root/.m2
+    working_dir: /app
+    ports:
+      - 8080:8080
+    command: mvn clean spring-boot:run
+    depends_on:
+      - docker-mysql
