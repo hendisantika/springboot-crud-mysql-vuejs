@@ -48,4 +48,14 @@ public class ProductAPI {
         return ResponseEntity.ok(stock.get());
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Product> update(@PathVariable Long id, @Valid @RequestBody Product product) {
+        if (!productService.findById(id).isPresent()) {
+            log.error("Id " + id + " is not existed");
+            ResponseEntity.badRequest().build();
+        }
+
+        return ResponseEntity.ok(productService.save(product));
+    }
+
 }
