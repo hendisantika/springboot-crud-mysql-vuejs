@@ -58,4 +58,16 @@ public class ProductAPI {
         return ResponseEntity.ok(productService.save(product));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable Long id) {
+        if (!productService.findById(id).isPresent()) {
+            log.error("Id " + id + " is not existed");
+            ResponseEntity.badRequest().build();
+        }
+
+        productService.deleteById(id);
+
+        return ResponseEntity.ok().build();
+    }
+
 }
