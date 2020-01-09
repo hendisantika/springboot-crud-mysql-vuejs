@@ -117,3 +117,17 @@ var AddProduct = Vue.extend({
         }
     }
 });
+
+var router = new VueRouter({
+    routes: [
+        {path: '/', component: List},
+        {path: '/product/:product_id', component: Product, name: 'product'},
+        {path: '/add-product', component: AddProduct},
+        {path: '/product/:product_id/edit', component: ProductEdit, name: 'product-edit'},
+        {path: '/product/:product_id/delete', component: ProductDelete, name: 'product-delete'}
+    ]
+});
+
+new Vue({
+    router
+}).$mount('#app');
