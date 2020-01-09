@@ -4,6 +4,7 @@ import com.hendisantika.springbootcrudmysqlvuejs.entity.Product;
 import com.hendisantika.springbootcrudmysqlvuejs.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +26,7 @@ import java.util.Optional;
 @Slf4j
 @RequiredArgsConstructor
 public class ProductAPI {
+    @Autowired
     private final ProductService productService;
 
     @GetMapping
