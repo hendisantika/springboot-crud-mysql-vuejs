@@ -71,3 +71,10 @@ var List = Vue.extend({
         })
     }
 });
+
+var Product = Vue.extend({
+    template: '#product',
+    data: function () {
+        return {product: findProduct(this.$route.params.product_id)};
+    }
+});
