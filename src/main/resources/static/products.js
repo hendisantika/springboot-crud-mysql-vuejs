@@ -91,3 +91,15 @@ var ProductEdit = Vue.extend({
         }
     }
 });
+
+var ProductDelete = Vue.extend({
+    template: '#product-delete',
+    data: function () {
+        return {product: findProduct(this.$route.params.product_id)};
+    },
+    methods: {
+        deleteProduct: function () {
+            productService.deleteProduct(this.product.id, r => router.push('/'))
+        }
+    }
+});
