@@ -103,3 +103,17 @@ var ProductDelete = Vue.extend({
         }
     }
 });
+
+var AddProduct = Vue.extend({
+    template: '#add-product',
+    data() {
+        return {
+            product: {name: '', description: '', price: 0}
+        }
+    },
+    methods: {
+        createProduct() {
+            productService.create(this.product, r => router.push('/'))
+        }
+    }
+});
