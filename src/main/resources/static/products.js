@@ -78,3 +78,16 @@ var Product = Vue.extend({
         return {product: findProduct(this.$route.params.product_id)};
     }
 });
+
+
+var ProductEdit = Vue.extend({
+    template: '#product-edit',
+    data: function () {
+        return {product: findProduct(this.$route.params.product_id)};
+    },
+    methods: {
+        updateProduct: function () {
+            productService.update(this.product.id, this.product, r => router.push('/'))
+        }
+    }
+});
