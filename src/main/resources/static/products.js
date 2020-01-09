@@ -49,3 +49,25 @@ var productService = {
             .catch(error => console.log(error))
     }
 };
+
+var List = Vue.extend({
+    template: '#product-list',
+    data: function () {
+        return {products: [], searchKey: ''};
+    },
+    computed: {
+        filteredProducts() {
+            return this.products.filter((product) => {
+                return product.name.indexOf(this.searchKey) > -1
+                    || product.description.indexOf(this.searchKey) > -1
+                    || product.price.toString().indexOf(this.searchKey) > -1
+            })
+        }
+    },
+    mounted() {
+        productService.findAll(r => {
+            this.products = r.data;
+            products = r.data
+        })
+    }
+});
